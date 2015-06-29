@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Javascript 表单验证</title>
+<style type="text/css">
+<!--
+body {
+	background-image: url(tupian/首页4_副本_副本.jpg);
+	background-repeat: no-repeat;
+}
+.STYLE1 {font-size: 36px}
+.STYLE2 {font-size: 24px}
+.STYLE3 {font-size: 36px; color: #000099; }
+-->
+</style></head>
+<script type="text/javascript">
+function form_onsubmit(){
+var name=document.getElementById('txtName').value;
+if(name==" "){
+alert("用户名不能为空!");
+return false;
+}
+var pwd=document.getElementById('txtPwd').value;
+var rePwd=document.getElementById('txtRePwd').value;
+if (pwd==' '||rePwd==' '){
+alert("密码不能为空");
+return false;
+} else if(rePwd!=pwd){
+alert("两次输入密码不一致!");
+return false;
+}
+//验证邮件地址
+var email=document.getElementById('txtEmail').value;
+if(email==" "){
+alert("邮箱地址不能为空！");
+return false;
+}
+var at=email.indexOf('@');
+var dot=email.indexOf('.');
+if (at==-1||dot==-1||dot-at<2){
+alert("邮箱地址格式错误！");
+return false;
+}
+//验证年龄
+var age=document.getElementById('txtAge').value;
+if(age==" "){
+alert("年龄不能为空!");
+return false;
+}else if(isNaN(age)){
+alert("年龄应该是数字！");
+return false;
+}
+//验证性别
+var sex=document.getElementsByName('rdnSex');
+if(sex[0].checked==false&&sex[1].checked==false){
+alert("没有选择性别！");
+return false;
+}
+return true;
+}
+</script>
+<body>
+<form onSubmit="return form_onsubmit();"method="post" action="x.html">
+<h1 class="STYLE3">欢迎进入四川师范大学旅游信息导航系统</h1>
+<h1 class="STYLE1">&nbsp;</h1>
+<h1 class="STYLE1">欢迎您注册成为新用户</h1>
+<table width="400">
+<tr>
+<td><span class="STYLE2">用户名</span>：</td>
+<td>
+<input type="text" name="txtName" id="txtName"></td>
+</tr>
+<td><span class="STYLE2">密码</span>：</td>
+<td><input type="password" name="txtPwd" id="txtPwd"></td>
+</tr>
+<tr>
+<td><span class="STYLE2">新密码</span>：</td>
+<td><input type="password" name="txtRePwd" id="txtRePwd" ></td>
+</tr>
+<tr>
+<td><span class="STYLE2">性别</span>：</td>
+<td>
+<input type="radio" name="rdnSex" value="男" >
+男
+<input type="radio" name="rdnSex" value="男" >
+女</td>
+</tr>
+<tr>
+<td><span class="STYLE2">年龄</span>：</td>
+<td><input type="text" name="txtAge" id="txtAge"></td>
+</tr>
+<tr>
+  <td colspan="2"><input name="submit" type="submit" value="确定" /></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
